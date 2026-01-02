@@ -1,0 +1,8 @@
+export enum ProcessoStatus {
+  EM_ANDAMENTO = 'EM_ANDAMENTO',
+  PENDENTE = 'PENDENTE',
+  ENCERRADO = 'ENCERRADO',
+  ARQUIVADO = 'ARQUIVADO',
+  GANHO = 'GANHO',
+  PERDIDO = 'PERDIDO',
+}
