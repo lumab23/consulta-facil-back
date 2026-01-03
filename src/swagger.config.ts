@@ -16,7 +16,7 @@ export const config = new DocumentBuilder()
         description: 'Insira o token JWT gerado no login para acessar os recursos protegidos',
         in: 'header',
       },
-      'access-token', 
+      'bearer', 
     )
     .addServer('http://localhost:3333', 'Ambiente de Desenvolvimento Local')
     .addServer('https://api.consultafacil.com.br', 'Servidor de Produção')

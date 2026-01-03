@@ -45,7 +45,18 @@ export class ClienteController {
   ) {}
 
   private getUserId(req: RequestWithUser): number {
-    return req.user.id;
+    console.log('req.user completo:', req.user);
+    
+    if (!req.user || !req.user.id) {
+      throw new Error('Usuário não autenticado ou ID não encontrado');
+    }
+    
+    const id = typeof req.user.id === 'string' 
+      ? parseInt(req.user.id, 10) 
+      : req.user.id;
+    
+    console.log('User ID extraído:', id);
+    return id;
   }
 
   @Post()

@@ -1,18 +1,22 @@
 import { registerDecorator, ValidationOptions } from 'class-validator';
-import { cpf, cnpj } from 'cpf-cnpj-validator'; 
 
 export function EhDocumentoValido(validationOptions?: ValidationOptions) {
-  return function (object: Object, propertyName: string) {
+  return function (object: any, propertyName: string) {
     registerDecorator({
       target: object.constructor,
       propertyName: propertyName,
       options: validationOptions,
       validator: {
         validate(value: any) {
-          return cpf.isValid(value) || cnpj.isValid(value);
+          
+          if (!value) return true;
+
+          const valorLimpo = String(value).replace(/\D/g, '');
+
+          return valorLimpo.length === 11 || valorLimpo.length === 14;
         },
         defaultMessage() {
-          return 'O CPF ou CNPJ informado é inválido';
+          return 'O documento deve ter 11 dígitos (CPF) ou 14 dígitos (CNPJ)';
         },
       },
     });
