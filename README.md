@@ -1,99 +1,79 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+````markdown
+# Consulta Fácil API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+### Overview
+**Consulta Fácil API** is a robust back-end solution designed for the management of law firms. The system centralizes the control of **clients, legal cases, and court hearings**, providing a secure and high-performance interface that enables lawyers and managers to organize the legal workflow efficiently.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+### 🛠 Technologies and Architecture
+The project logic is built on a modern ecosystem focused on strong typing and scalability:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- **NestJS**: Progressive Node.js framework for building efficient applications.
+- **TypeScript**: Ensures type safety across the entire application.
+- **PostgreSQL**: Relational database for secure storage of critical data.
+- **TypeORM**: ORM for database management, using **Migrations** and **Subscribers** (automatic auditing).
+- **JWT (JSON Web Token)**: Token-based authentication for route protection.
+- **Docker & Docker Compose**: Standardization of development and production environments.
+- **Swagger (OpenAPI)**: Interactive documentation for easy front-end integration.
 
-## Project setup
+---
+
+### 🚀 System Modules
+The project follows a modular structure, where each business domain is isolated and independent:
+
+- **Authentication (`AuthModule`)**: User registration, secure login with Bcrypt, and resource protection via JWT Strategy.
+- **Clients (`ClienteModule`)**: Full client management, including custom validators for documents (CPF/CNPJ).
+- **Cases (`ProcessoModule`)**: Management of cases linked to clients, allowing status tracking and case numbering.
+- **Hearings (`AudienciaModule`)**: Scheduling of hearings linked to specific cases.
+- **Dashboard (`DashboardModule`)**: Aggregation service that generates statistics and summaries about system data volume.
+
+---
+
+### 💻 Installation and Running
+
+#### 1. Clone and install dependencies
+```bash
+npm install
+````
+
+#### 2. Docker setup (Recommended)
+
+Make sure Docker is installed and run:
 
 ```bash
-$ npm install
+docker-compose up -d
 ```
 
-## Compile and run the project
+#### 3. Environment Variables
+
+Create a `.env` file at the root of the project with the database credentials and the `JWT_SECRET`.
+
+#### 4. Development Execution
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm run start:dev
 ```
 
-## Run tests
+#### 5. Access the Documentation
 
-```bash
-# unit tests
-$ npm run test
+After starting the server, the Swagger documentation will be available at:
+`http://localhost:3000/api`
 
-# e2e tests
-$ npm run test:e2e
+---
 
-# test coverage
-$ npm run test:cov
+### 📂 Main Folder Structure
+
+* `src/modules`: Business logic divided by features.
+* `src/database`: Entity definitions, migrations, and TypeORM configuration.
+* `src/common`: Validators, decorators, and global utilities.
+* `src/main.ts`: Application entry point and Swagger configuration.
+
+---
+
+### Conclusion
+
+This project provides a solid foundation for the digitalization of legal processes, focusing on **security, data auditing, and modular organization**, making continuous software expansion straightforward.
+
 ```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
 ```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
-# consulta-facil-back
