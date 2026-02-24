@@ -1,4 +1,3 @@
-````markdown
 # Consulta Fácil API
 
 ### Overview
@@ -35,7 +34,6 @@ The project follows a modular structure, where each business domain is isolated 
 #### 1. Clone and install dependencies
 ```bash
 npm install
-````
 
 #### 2. Docker setup (Recommended)
 
